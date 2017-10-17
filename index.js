@@ -2,7 +2,7 @@
 const chalk = require('chalk')
 const pkg = require('./package.json')
 
-const nameError =
+const nameError = dBernardSeniorEnrichment
 `*******************************************************************
  You need to give your app a name.
 
