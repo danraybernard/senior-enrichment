@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, HashRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import store, { fetchCampus, fetchStudents } from '../store';
 import Campus from './Campus';

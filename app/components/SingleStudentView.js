@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { Link, HashRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import store, { fetchStudent, fetchCampuses } from '../store';
 
 class SingleStudentView extends Component {
-  constructor(props){
-    super(props);
-  }
+
 
   componentDidMount () {
+    store.dispatch(fetchCampuses());
     store.dispatch(fetchStudent(this.props.match.params.id));
-    store.dispatch(fetchCampuses);
   }
 
-  return () {
+  render () {
+    const filterCampuses = this.props.campuses.filter(campus => {return campus.id === this.props.student.campusId});
+    console.log(filterCampuses[0]);
     return (
       <div>
-      {this.props.campus.name}
-      <div>{this.props.campuses.filter(campus => {return campus.id === this.props.student.id})}</div>
+      <h1>{this.props.student ? this.props.student.name : null}</h1>
+      <h3>{this.props.student ? this.props.student.email : null}</h3>
+      <h3>{this.props.campuses && this.props.campuses.length > 0 ? filterCampuses[0].name : null}</h3>
       </div>
     )
   }
@@ -25,8 +26,8 @@ class SingleStudentView extends Component {
 
 const mapStateToProps = function (state) {
   return ({
-    campus: state.campus,
-    students: state.students
+    campuses: state.campuses,
+    student: state.student
   })
 };
 

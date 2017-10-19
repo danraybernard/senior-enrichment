@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, HashRouter, Route } from 'react-router-dom';
+import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import store, { fetchStudents } from '../store';
 function StudentList (props) {
@@ -18,19 +18,17 @@ function StudentList (props) {
   )
 }
 class Students extends Component {
-  constructor(props){
-    super(props);
-  }
-  compnentDidMount () {
+
+  componentDidMount () {
     store.dispatch(fetchStudents());
   }
   render () {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div>
         {this.props.students.map(student => {
-          return <div key={student.id}>
-          {student.name} </div>
+          return <h3 key={student.id}>
+          {student.name} </h3>
         })}
       </div>
     )

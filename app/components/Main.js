@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, HashRouter, Route, Switch } from 'react-router-dom';
+import { Link, BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Navbar } from 'react-bootstrap';
 import Campuses from './Campuses';
 import Students from './Students';
@@ -10,7 +10,7 @@ export default class Main extends Component {
 
     render() {
       return (
-        <HashRouter>
+        <BrowserRouter>
           <div id="main" className="container-fluid">
             <div className="col-xs-2">
             </div>
@@ -32,7 +32,7 @@ export default class Main extends Component {
             </div>
 
           </div>
-        </HashRouter>
+        </BrowserRouter>
       );
     }
   }
