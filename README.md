@@ -36,13 +36,13 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
 #### See Wireframes folder for visual
 
 - Navigation: as a user I...
-  * will land on **Home** by default
+  * will land on **Home** by default DONE
   * can navigate to **Campuses** from **Home** DONE
   * can navigate to **Students** from **Home** DONE
   * can navigate to view a **Single Campus** from **Campuses** DONE
-  * can navigate to view a **Single Student** from **Students**
-  * can navigate to view a **Single Student** from **Single Campus** (for any student at that campus)
-  * can navigate to view that student's **Single Campus** from **Single Student**
+  * can navigate to view a **Single Student** from **Students** DONE
+  * can navigate to view a **Single Student** from **Single Campus** (for any student at that campus) DONE
+  * can navigate to view that student's **Single Campus** from **Single Student** DONE
 
 - Views: as a user I...
   * see a list of all campuses on the **Campuses** view DONE
@@ -59,6 +59,8 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
   * can delete a student
 
 ### Routes
+
+
 
 ```
 GET

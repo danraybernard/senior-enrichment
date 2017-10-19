@@ -27,3 +27,35 @@ api.post('/', function (req, res, next) {
     console.log(err, req.body);
   });
 });
+
+api.put('/:studentId', function (req, res, next) {
+  const studentId = req.params.studentId;
+  Student.findOne({
+    where: {
+      id: studentId
+    }
+  })
+  .then(student => student.update(
+    req.body
+  ))
+  .then(function () {
+    res.end();
+  })
+  .catch(function(err){
+    console.log(err, req.body);
+  })
+})
+
+api.delete('/:studentId', function (req, res, next) {
+  const studentId = req.params.studentId;
+  Student.findOne({
+    where: {
+      id: studentId
+    }
+  })
+  .then(student => student.destroy)
+  .then(function () {
+    res.status(204).end();
+  })
+  .catch(next);
+})

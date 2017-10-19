@@ -20,15 +20,15 @@ function StudentList (props) {
 class Students extends Component {
 
   componentDidMount () {
-    store.dispatch(fetchStudents());
+    this.props.connectFetchStudents();
   }
   render () {
     console.log(this.props);
     return (
       <div>
         {this.props.students.map(student => {
-          return <h3 key={student.id}>
-          {student.name} </h3>
+          return (<Link to={`/students/${student.id}`} key={student.id}><h3>
+          {student.name} </h3></Link>)
         })}
       </div>
     )
@@ -44,7 +44,7 @@ const mapStateToProps = function (state) {
 }
 const mapDispatchToProps = function (dispatch) {
   return {
-    fetchStudents(students){
+    connectFetchStudents(students){
       dispatch(fetchStudents(students));
     }
   };

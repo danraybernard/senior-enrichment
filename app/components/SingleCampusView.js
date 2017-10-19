@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import store, { fetchCampus, fetchStudents } from '../store';
+import { fetchCampus, fetchStudents } from '../store';
 import Campus from './Campus';
 
 class SingleCampusView extends Component {
-  constructor(props){
-    super(props);
-  }
+
   componentDidMount () {
-    store.dispatch(fetchStudents());
-    store.dispatch(fetchCampus(this.props.match.params.id));
+    this.props.connectFetchStudents();
+    this.props.connectFetchCampus(this.props.match.params.id);
   }
 
   render () {
@@ -21,7 +19,7 @@ class SingleCampusView extends Component {
             return student.campusId === this.props.campus.id;
           })
             .map(student => {
-            return <div key={student.id}> {student.name} </div>
+            return <div key={student.id}> <Link to={`/students/${student.id}`}>{student.name}</Link> </div>
           })}
       </div>
     )
@@ -37,10 +35,10 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    fetchCampus(campus){
+    connectFetchCampus(campus){
       dispatch(fetchCampus(campus))
     },
-    fetchStudents(students){
+    connectFetchStudents(students){
       dispatch(fetchStudents(students))
     }
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import store, { fetchCampuses } from '../store';
+import { fetchCampuses } from '../store';
 import Campus from './Campus';
 function CampusList (props) {
 
@@ -26,11 +26,9 @@ function CampusList (props) {
 
 
 class Campuses extends Component {
-  constructor(props){
-    super(props);
-  }
+
   componentDidMount () {
-    store.dispatch(fetchCampuses());
+    this.props.connectFetchCampuses();
   }
 
 
@@ -54,7 +52,7 @@ const mapStateToProps = function (state) {
 
   const mapDispatchToProps = function (dispatch) {
     return {
-        fetchCampuses(campuses){
+        connectFetchCampuses(campuses){
           dispatch(fetchCampuses(campuses));
         }
     };

@@ -21,7 +21,7 @@ export const GET_CAMPUSES = 'GET_CAMPUSES';
 export const GET_STUDENTS = 'GET_STUDENTS';
 export const GET_STUDENT = 'GET_STUDENT';
 export const CREATE_STUDENT = 'CREATE_STUDENT';
-
+export const EDIT_STUDENT = 'EDIT_STUDENT';
 
 // ACTION CREATORS
 export function getStudents (students) {
@@ -31,6 +31,11 @@ export function getStudents (students) {
 
 export function getStudent (student) {
   const action = { type: GET_STUDENT, student };
+  return action;
+}
+
+export function editStudent (student) {
+  const action = { type: EDIT_STUDENT, student };
   return action;
 }
 
@@ -58,9 +63,10 @@ export function fetchStudents () {
 }
 export function fetchStudent (studentId) {
     return function thunk (dispatch) {
-      axios.get(`api/students/${studentId}`)
+      axios.get(`/api/students/${studentId}`)
         .then(res => res.data)
         .then(student => {
+          console.log('this is the student', student);
           const action = getStudent(student);
           dispatch(action);
         })
@@ -88,6 +94,14 @@ export function fetchCampus (campusId) {
           const action = getCampus(campus);
           dispatch(action);
         })
+        .catch(console.error);
+    }
+}
+
+export function updateStudent (studentId, student) {
+    return function thunk (dispatch) {
+      axios.put(`/api/students/${studentId}`, student)
+        .then(res => dispatch(editStudent(res.data)))
         .catch(console.error);
     }
 }
