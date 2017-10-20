@@ -39,7 +39,7 @@ handleCampusChange (evt) {
 }
 
 handleSubmit (evt) {
-  evt.preventDefault();
+
 
   if (this.state.nameInputValue.name.length > 0) {
     this.props.connectUpdateStudent(this.props.match.params.id, this.state.nameInputValue)
@@ -60,7 +60,6 @@ handleSubmit (evt) {
       nameInputValue: null
     })
 
-  this.props.history.push('/');
 }
 
   componentDidMount () {

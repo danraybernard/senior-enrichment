@@ -36,7 +36,7 @@ constructor (props) {
     // this.props.connectUpdateCampus(this.props.match.params.id, this.props.match.params);
   }
   handleSubmit (evt) {
-    evt.preventDefault();
+
     if (this.state.nameInputValue.name.length > 0){
       console.log('hiting sub', this.state.nameInputValue);
       this.props.connectUpdateCampus(this.props.match.params.id, this.state.nameInputValue)
@@ -47,7 +47,6 @@ constructor (props) {
       this.props.connectUpdateCampus(this.props.match.params.id, this.state.imageInputValue);
     }
 
-    this.props.history.push('/');
   }
 
 
