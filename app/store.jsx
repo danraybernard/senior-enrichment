@@ -47,6 +47,11 @@ export function createCampus (campusInfo) {
   return action;
 }
 
+export function createSutdent (studentInfo) {
+  const action = { type: CREATE_STUDENT, studentInfo };
+  return action;
+}
+
 export function getStudent (student) {
   const action = { type: GET_STUDENT, student };
   return action;
@@ -78,6 +83,17 @@ export function fetchStudents () {
         })
         .catch(console.error);
     }
+}
+
+export function makeStudent (studentInfo) {
+  return function thunk (dispatch) {
+    axios.post('/api/students/create', studentInfo)
+    .then(() => {
+      const action = createSutdent(studentInfo);
+      dispatch(action);
+    })
+    .catch(console.error);
+  }
 }
 
 export function makeCampus (campusInfo) {

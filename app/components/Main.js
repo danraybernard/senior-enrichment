@@ -5,6 +5,7 @@ import Campuses from './Campuses';
 import Home from './Home';
 import Students from './Students';
 import CreateCampus from './CreateCampus';
+import CreateStudent from './CreateStudent';
 import SingleCampusView from './SingleCampusView';
 import SingleStudentView from './SingleStudentView';
 export default class Main extends Component {
@@ -29,7 +30,8 @@ export default class Main extends Component {
               <Route exact path="/campuses" component={Campuses} />
               <Route exact path="/campuses/create" component={CreateCampus} />
               <Route path="/campuses/:id" component={SingleCampusView} />
-              <Route exact path ="/students" component={Students} />
+              <Route exact path="/students" component={Students} />
+              <Route exact path="/students/create" component={CreateStudent} />
               <Route path="/students/:id" component={SingleStudentView} />
               </Switch>
             </div>

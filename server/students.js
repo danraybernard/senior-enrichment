@@ -20,7 +20,7 @@ api.get('/:studentId', function (req, res, next) {
   .catch(next);
 });
 
-api.post('/', function (req, res, next) {
+api.post('/create', function (req, res, next) {
   Student.create({name: req.body.name, email: req.body.email, campusId: req.body.campusId})
   .then(student => res.status(201).json(student))
   .catch(function(err){
