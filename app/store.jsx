@@ -98,9 +98,11 @@ export function fetchCampus (campusId) {
     }
 }
 
-export function updateStudent (studentId, student) {
+export function updateStudent (studentId, data) {
+    console.log('CALLED');
+    console.log('DATA: ', data);
     return function thunk (dispatch) {
-      axios.put(`/api/students/${studentId}`, student)
+      axios.put(`/api/students/${studentId}`, data)
         .then(res => dispatch(editStudent(res.data)))
         .catch(console.error);
     }
