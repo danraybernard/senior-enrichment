@@ -20,6 +20,11 @@ export default class Main extends Component {
             <Navbar>
             <Navbar.Header>
               <Navbar.Brand>
+              <Link to="/"> HOME    </Link>
+              <Link to="/campuses">Campuses </Link>
+              <Link to="/students">Students </Link>
+              <Link to="/campuses/create">CreateCampus </Link>
+              <Link to="/students/create">CreateStudent </Link>
               </Navbar.Brand>
             </Navbar.Header>
           </Navbar>

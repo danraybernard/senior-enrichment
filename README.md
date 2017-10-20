@@ -51,12 +51,12 @@ Use at least sequelize, express, react, and redux when creating this app. You ca
   * see details about a student on the **Single Student** view, including that student's campus DONE
 
 - Actions: as a user I...
-  * can create a campus
-  * can edit a campus's info, including adding/removing a student to/from that campus
-  * can delete a campus
-  * can create a student
-  * can edit a student's info, including the campus that student is assigned to
-  * can delete a student
+  * can create a campus DONE
+  * can edit a campus's info, including adding/removing a student to/from that campus DONE
+  * can delete a campus DONE
+  * can create a student DONE
+  * can edit a student's info, including the campus that student is assigned to DONE
+  * can delete a student DONE
 
 ### Routes
 

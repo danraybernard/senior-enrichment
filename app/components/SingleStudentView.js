@@ -43,7 +43,7 @@ handleSubmit (evt) {
 
   if (this.state.nameInputValue.name.length > 0) {
     this.props.connectUpdateStudent(this.props.match.params.id, this.state.nameInputValue)
-
+  }
     if (this.state.emailInputValue.email.length !== 0) {
       this.props.connectUpdateStudent(this.props.match.params.id, this.state.emailInputValue)
     }
@@ -59,7 +59,7 @@ handleSubmit (evt) {
     this.setState({
       nameInputValue: null
     })
-  }
+
   this.props.history.push('/');
 }
 

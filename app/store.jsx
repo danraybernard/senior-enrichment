@@ -20,6 +20,7 @@ export const GET_CAMPUS = 'GET_CAMPUS';
 export const CREATE_CAMPUS = 'CREATE_CAMPUS';
 export const DELETE_STUDENT = 'DELETE_STUDENT';
 export const UPDATE_STUDENT = 'UPDATE_STUDENT';
+export const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 export const GET_CAMPUSES = 'GET_CAMPUSES';
 export const GET_STUDENTS = 'GET_STUDENTS';
 export const GET_STUDENT = 'GET_STUDENT';
@@ -59,6 +60,11 @@ export function getStudent (student) {
 
 export function editStudent (student) {
   const action = { type: EDIT_STUDENT, student };
+  return action;
+}
+
+export function editCampus (campusInfo) {
+  const action = { type: UPDATE_CAMPUS, campusInfo };
   return action;
 }
 
@@ -165,6 +171,13 @@ export function fetchCampus (campusId) {
         })
         .catch(console.error);
     }
+}
+export function updateCampus (campusId, data) {
+  return function thunk (dispatch) {
+    axios.put(`/api/campuses/${campusId}`, data)
+      .then(res => dispatch(editCampus(res.data)))
+      .catch(console.error);
+  }
 }
 
 export function updateStudent (studentId, data) {
