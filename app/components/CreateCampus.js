@@ -32,7 +32,6 @@ class CreateCampus extends Component {
   handleSubmit (evt) {
     evt.preventDefault();
     if (this.state.name.length > 0) {
-      console.log(this.state);
       this.props.connectCreateCampus(this.state);
       this.props.history.push('/');
     }

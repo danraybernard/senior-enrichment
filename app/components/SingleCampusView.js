@@ -32,18 +32,14 @@ constructor (props) {
     this.props.connectFetchStudents();
     this.props.connectFetchCampus(this.props.match.params.id);
   }
-  componentWillUpdate () {
-    // this.props.connectUpdateCampus(this.props.match.params.id, this.props.match.params);
-  }
+
   handleSubmit (evt) {
 
     if (this.state.nameInputValue.name.length > 0){
-      console.log('hiting sub', this.state.nameInputValue);
       this.props.connectUpdateCampus(this.props.match.params.id, this.state.nameInputValue)
     }
 
     if (this.state.imageInputValue.image.length > 0){
-      console.log('img sub hitting')
       this.props.connectUpdateCampus(this.props.match.params.id, this.state.imageInputValue);
     }
 

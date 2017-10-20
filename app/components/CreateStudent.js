@@ -31,7 +31,6 @@ class CreateStudent extends Component {
   }
   handleCampusChange (evt) {
     const value = evt.target.value
-    console.log('campus changing', this.state.campus)
     this.setState({
       campusId: value
     })
@@ -39,9 +38,7 @@ class CreateStudent extends Component {
 
   handleSubmit (evt) {
     evt.preventDefault();
-    // console.log(this.state)
 
-      console.log(this.state);
       this.props.connectMakeStudent(this.state);
 
     this.props.history.push('/');
@@ -49,7 +46,7 @@ class CreateStudent extends Component {
 
   componentDidMount () {
     this.props.connectFetchCampuses();
-    console.log(this.props);
+
   }
 
   render () {

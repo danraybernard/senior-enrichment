@@ -141,7 +141,6 @@ export function fetchStudent (studentId) {
       axios.get(`/api/students/${studentId}`)
         .then(res => res.data)
         .then(student => {
-          console.log('this is the student', student);
           const action = getStudent(student);
           dispatch(action);
         })
@@ -181,8 +180,6 @@ export function updateCampus (campusId, data) {
 }
 
 export function updateStudent (studentId, data) {
-    console.log('CALLED');
-    console.log('DATA: ', data);
     return function thunk (dispatch) {
       axios.put(`/api/students/${studentId}`, data)
         .then(res => dispatch(editStudent(res.data)))

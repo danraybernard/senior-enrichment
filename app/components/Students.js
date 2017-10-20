@@ -23,7 +23,6 @@ class Students extends Component {
     this.props.connectFetchStudents();
   }
   render () {
-    console.log(this.props);
     return (
       <div>
         {this.props.students.map(student => {
