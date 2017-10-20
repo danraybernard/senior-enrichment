@@ -20,7 +20,7 @@ api.get('/:campusId', function (req, res, next) {
   .catch(next);
 });
 
-api.post('/', function (req, res, next) {
+api.post('/create', function (req, res, next) {
   Campus.create(req.body)
   .then(campus => res.status(201).json(campus))
   .catch(function(err){
@@ -53,7 +53,7 @@ api.delete('/:campusId', function (req, res, next) {
       id: campusId
     }
   })
-  .then(campus => campus.destroy)
+  .then(campus => campus.destroy())
   .then(function () {
     res.status(204).end();
   })

@@ -4,6 +4,7 @@ import { Navbar } from 'react-bootstrap';
 import Campuses from './Campuses';
 import Home from './Home';
 import Students from './Students';
+import CreateCampus from './CreateCampus';
 import SingleCampusView from './SingleCampusView';
 import SingleStudentView from './SingleStudentView';
 export default class Main extends Component {
@@ -26,6 +27,7 @@ export default class Main extends Component {
               <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/campuses" component={Campuses} />
+              <Route exact path="/campuses/create" component={CreateCampus} />
               <Route path="/campuses/:id" component={SingleCampusView} />
               <Route exact path ="/students" component={Students} />
               <Route path="/students/:id" component={SingleStudentView} />

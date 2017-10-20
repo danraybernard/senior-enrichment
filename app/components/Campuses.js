@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCampuses } from '../store';
+import { fetchCampuses, removeCampus} from '../store';
 import Campus from './Campus';
 function CampusList (props) {
 
@@ -12,11 +12,19 @@ function CampusList (props) {
         <ul className="campus-list">
         {
           campuses.map(campus => (
-            <Link to={`/campuses/${campus.id}`} key={campus.id}>
-            <div className="col-xs-4">
-            <Campus campus={campus} />
+            <div key={campus.id}>
+              <div className="col-xs-4">
+                <Link to={`/campuses/${campus.id}`}>
+                  <Campus campus={campus} />
+                </Link>
+                <button onClick={() => {
+                  props.connectRemoveCampus(campus.id);
+                  props.history.push('/')}
+                }>
+                  Delete
+                </button>
+              </div>
             </div>
-            </Link>
           ))
         }
         </ul>
@@ -54,6 +62,9 @@ const mapStateToProps = function (state) {
     return {
         connectFetchCampuses(campuses){
           dispatch(fetchCampuses(campuses));
+        },
+        connectRemoveCampus(campusId){
+          dispatch(removeCampus(campusId));
         }
     };
   };

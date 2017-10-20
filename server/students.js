@@ -47,14 +47,15 @@ api.put('/:studentId', function (req, res, next) {
 })
 
 api.delete('/:studentId', function (req, res, next) {
+  console.log('getting called');
   const studentId = req.params.studentId;
   Student.findOne({
     where: {
       id: studentId
     }
   })
-  .then(student => student.destroy)
-  .then(function () {
+  .then(student => (student.destroy()))
+  .then(() => {
     res.status(204).end();
   })
   .catch(next);

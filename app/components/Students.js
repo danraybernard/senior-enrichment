@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import store, { fetchStudents } from '../store';
+import store, { fetchStudents, removeStudent } from '../store';
 function StudentList (props) {
   const { students } = props;
 
@@ -27,8 +27,21 @@ class Students extends Component {
     return (
       <div>
         {this.props.students.map(student => {
-          return (<Link to={`/students/${student.id}`} key={student.id}><h3>
-          {student.name} </h3></Link>)
+          return (
+            <div key={student.id}>
+              <Link to={`/students/${student.id}`}>
+                <h3>
+                  {student.name}
+                </h3>
+              </Link>
+              <button onClick={() => {
+                this.props.connectRemoveStudents(student.id);
+                this.props.history.push('/')}
+              }>
+                Delete
+              </button>
+            </div>
+          )
         })}
       </div>
     )
@@ -46,6 +59,9 @@ const mapDispatchToProps = function (dispatch) {
   return {
     connectFetchStudents(students){
       dispatch(fetchStudents(students));
+    },
+    connectRemoveStudents(studentId){
+      dispatch(removeStudent(studentId));
     }
   };
 };
