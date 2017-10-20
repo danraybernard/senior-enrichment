@@ -9,7 +9,7 @@ constructor (props) {
   this.state = {
     nameInputValue: {name: ''},
     emailInputValue: {email: ''},
-    campusInputValue: {campusId: ''}
+    campusInputValue: {campusId: ''},
   }
   this.handleEmailChange = this.handleEmailChange.bind(this);
   this.handleNameChange = this.handleNameChange.bind(this);
@@ -49,15 +49,10 @@ handleSubmit (evt) {
     }
 
     let test = this.props.campuses.find((campus) => {
-      console.log('CAMPUS OBJ: ', campus.id);
-      console.log('state: ', this.state.campusInputValue.campusId);
       return campus.id == this.state.campusInputValue.campusId;
     });
 
-    console.log('this is it: ', test)
-
     if (test !== undefined) {
-      console.log('DFGSGFHHJKO');
       this.props.connectUpdateStudent(this.props.match.params.id, this.state.campusInputValue)
     }
 
@@ -66,8 +61,6 @@ handleSubmit (evt) {
     })
   }
   this.props.history.push('/');
-
-
 }
 
   componentDidMount () {
@@ -76,17 +69,12 @@ handleSubmit (evt) {
   }
 
   componentWillUpdate () {
-    console.log('hello', this.props);
     this.props.connectUpdateStudent(this.props.match.params.id, this.props.match.params);
   }
 
   render () {
-    console.log('params', this.props.match.params)
-
     const filterCampuses = this.props.campuses.filter(campus => {return campus.id === this.props.student.campusId});
-    const mapCampusesToDropdown = this.props.campuses.map(campus => {
-      return <div></div>
-    })
+    let classList;
 
     return (
       <div>
@@ -94,8 +82,7 @@ handleSubmit (evt) {
       <h3>{this.props.student ? this.props.student.email : null}</h3>
       <h3>{filterCampuses.length > 0 ? <Link to={`/campuses/${filterCampuses[0].id}`}>{filterCampuses[0].name}</Link> : null}</h3>
 
-
-      <form className="form-horizontal" onSubmit={this.handleSubmit}>
+      <form className="form-horizontal">
       <fieldset>
         <legend>Update Student Info</legend>
         <div className="form-group">
@@ -112,22 +99,17 @@ handleSubmit (evt) {
           </div>
         </div>
 
-        <div className="form-group">
-          <div className="col-xs-10">
-            <input className="form-control" type="text" onChange={this.handleCampusChange} value={this.campusInputValue} />
-          </div>
-      </div>
         <div>
         <label className="col-xs-2 control-label">Campus</label>
-          <select>
+          <select onChange={this.handleCampusChange}>
             {this.props.campuses.map(campus => {
-              return <option key={campus.id} value={campus.id} onChange={this.handleCampusChange}>{campus.name}</option>
+              return <option key={campus.id} value={campus.id}>{campus.name}</option>
             })}
           </select>
         </div>
         <div className="form-group">
           <div className="col-xs-10 col-xs-offset-2">
-            <button type="submit" className="btn btn-success">Update Student</button>
+            <button onClick={this.handleSubmit} className="btn btn-success">Update Student</button>
           </div>
         </div>
       </fieldset>
