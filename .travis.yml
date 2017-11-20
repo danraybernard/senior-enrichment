@@ -9,10 +9,7 @@
   "install": [
     "npm"
   ],
-  "script": [
-    "npm build",
-    "npm test"
-  ],
+
   "group": "stable",
   "dist": "trusty",
   "os": "linux"
