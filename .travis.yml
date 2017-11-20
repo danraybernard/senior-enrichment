@@ -8,7 +8,7 @@
   },
   "script": [
     "npm build",
-    "yarn test"
+    "npm test"
   ],
 
   "group": "stable",
