@@ -6,9 +6,7 @@
       "node_modules"
     ]
   },
-  "install": [
-    "npm"
-  ],
+  
 
   "group": "stable",
   "dist": "trusty",
