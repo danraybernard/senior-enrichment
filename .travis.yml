@@ -6,7 +6,10 @@
       "node_modules"
     ]
   },
-  
+  "script": [
+    "npm build",
+    "yarn test"
+  ],
 
   "group": "stable",
   "dist": "trusty",
